@@ -17,7 +17,7 @@ chrom_list=chroms.chrom.tolist()
 
 
 def get_bams_in_batch(wc):
-  b=bams.loc[(bams["bat"] == wc.bat)]
+  b=bams.loc[(bams["batch"] == wc.bat)]
   return b.path.tolist()
   
 def get_chunk(wc):
