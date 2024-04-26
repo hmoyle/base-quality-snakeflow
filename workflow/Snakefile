@@ -1,6 +1,8 @@
 
 localrules: make_bamlists
 
+include: "rules/common.smk"
+
 
 rule all:
   input:
