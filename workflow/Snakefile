@@ -28,11 +28,11 @@ rule make_bamlists:
   input:
     bl=get_bams_in_batch
   output:
-    bl="results/{mode}/{chunk}/bamlists/{grp}.txt"
+    bl="results/{mode}/{chunk}/bamlists/{bat}.txt"
   log:
-    "results/logs/make_bamlists/{mode}/{chunk}/{grp}.txt"
+    "results/logs/make_bamlists/{mode}/{chunk}/{bat}.txt"
   benchmark:
-    "results/benchmarks/make_bamlists/{mode}/{chunk}/{grp}.txt"
+    "results/benchmarks/make_bamlists/{mode}/{chunk}/{bat}.txt"
   shell:
     "echo {input.bl} | awk '{{for(i=1;i<=NF;i++) print $i}}' > {output.b1} 2> {log} "
     
