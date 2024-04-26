@@ -28,7 +28,7 @@ rule make_bamlists:
   input:
     bl=get_bams_in_batch
   output:
-    bl="results/{mode}/{chunk}/bamlists/{bat}.txt"
+    b1="results/{mode}/{chunk}/bamlists/{bat}.txt"
   log:
     "results/logs/make_bamlists/{mode}/{chunk}/{bat}.txt"
   benchmark:
