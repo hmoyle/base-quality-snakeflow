@@ -1,0 +1,11 @@
+bams: "config/bams.tsv"
+batches: "config/batches.tsv"
+genome: "resources/genome.fasta"
+
+modes: ["BY_CHROM"]
+chroms: "config/chroms.tsv"
+
+
+params:
+  angsd_bam_filters: " -setMinDepth 2 -setMaxDepth 10 -minQ 20 -minMapQ 30 -baq 1"
+  calc_saf: " -doSaf 1 -GL 1 -doCounts 1"
