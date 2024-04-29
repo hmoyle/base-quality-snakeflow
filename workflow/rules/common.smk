@@ -26,10 +26,12 @@ def get_chunk(wc):
 # expand by chroms:
 CHROMBS=expand("results/{mode}/{chunk}/saf/{{bat}}.saf.idx", mode=["BY_CHROM"], chunk=chrom_list)
 
+CHROMSFS=expand("results/{mode}/{chunk}/sfs/{{bat}}.ml", mode=["BY_CHROM"], chunk=chrom_list)
+
 
 
 ALLBAT=expand(
-  CHROMBS,
+  CHROMSFS,
   zip,
   bat=batches.batch.tolist()
 )

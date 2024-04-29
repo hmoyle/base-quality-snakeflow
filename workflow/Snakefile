@@ -61,5 +61,21 @@ rule calc_saf:
     " angsd -b {input.bl} -nThreads {threads} -anc {input.genome} {params.chunk_opt} "
     " -ref {input.genome} -out $PREFIX {params.cs} {params.bf} > {log} 2>&1 "
     
-    
+  
 
+rule calc_sfs:
+  input:
+    saf="results/{mode}/{chunk}/saf/{bat}.saf.idx"
+  output:
+    sfs="results/{mode}/{chunk}/sfs/{bat}.ml"
+  params:
+    rs=config["params"]["realSFS"]
+    chunk_opt=get_chunk
+  conda:
+    "envs/angsd.yaml"
+  log:
+    "results/logs/calc_sfs/{mode}/{chunk}/{bat}.txt"
+  benchmark:
+    "results/benchmarks/calc_sfs/{mode}/{chunk}/{bat}.txt"
+  shell:
+    " realSFS -cores {threads} {params.rs} {params.chunk_opt} {input.saf} > {output.sfs} 2> {log} "

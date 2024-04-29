@@ -1,0 +1,21 @@
+
+# activate snakemake environment
+mamba activate snakemake7.32
+# i use version 7.32.4 since my slurm config file uses rerun-triggers, which is not an argument in the newer versions like 7.7.0
+
+# make bams.tsv and batches.tsv
+ls /scratch2/trout-project/results/batch-effects-experiment/mega-non-model-wgs/run1-20240419/bqsr-round-0/overlap_clipped/*.bam > bam-paths.tsv
+# add to bam-paths sample name and batch
+# add batch names to batches in a single col
+nano batches.tsv
+
+# alter config file for base quality filters
+# April 29th 2024, run 1: -minQ 20 -minMapQ 30
+# trying to compare heterzygosity as best we can to Nina's batch effects paper
+
+# dry-run: 129 jobs
+snakemake --profile hpcc-profiles/slurm/sedna/ --configfile config/config.yaml -np
+# full run:
+snakemake --profile hpcc-profiles/slurm/sedna/ --configfile config/config.yaml -p
+## this run was only for creating saf files
+## my next commit i add in the sfs calculation with realSFS
