@@ -1,5 +1,4 @@
-bams: "config/bams.tsv"
-batches: "config/batches.tsv"
+samples: "config/bams.tsv"
 genome: "resources/genome.fasta"
 
 modes: ["BY_CHROM"]
