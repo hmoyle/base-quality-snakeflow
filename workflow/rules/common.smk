@@ -21,7 +21,7 @@ def get_bams_in_batch(wc):
   return b.path.tolist()
   
 def get_chunk(wc):
-  return "-r" + wc.chunk
+  return "-r " + wc.chunk
   
 # expand by chroms:
 CHROMBS=expand("results/{mode}/{chunk}/saf/{{bat}}.saf.idx", mode=["BY_CHROM"], chunk=chrom_list)
