@@ -26,5 +26,5 @@ CHROMSFS=expand("results/{mode}/{chunk}/sfs/{{samp}}.ml", mode=["BY_CHROM"], chu
 ALLBAT=expand(
   CHROMSFS,
   zip,
-  samp=samp.sample.tolist()
+  samp=samples.sample.tolist()
 )
