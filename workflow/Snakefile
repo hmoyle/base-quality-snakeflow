@@ -69,7 +69,7 @@ rule calc_sfs:
   output:
     sfs="results/{mode}/{chunk}/sfs/{bat}.ml"
   params:
-    rs=config["params"]["realSFS"]
+    rs=config["params"]["realSFS"],
     chunk_opt=get_chunk
   conda:
     "envs/angsd.yaml"
