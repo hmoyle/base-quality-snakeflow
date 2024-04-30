@@ -12,7 +12,7 @@ chroms = pd.read_table(config["chroms"], dtype=str).set_index(["chrom"], drop=Fa
 
 chrom_list=chroms.chrom.tolist()
 
-sample_list=list(bams["sample"].unique())
+sample_list=list(bams.sample.unique())
 
   
 def get_chunk(wc):
