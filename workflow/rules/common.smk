@@ -7,7 +7,7 @@ from snakemake.utils import min_version
 
 
 bams = pd.read_table(config["bams"], dtype=str).set_index(
-  ["sample", "path"], drop=False
+  ["sample"], drop=False
 )
 
 
@@ -26,5 +26,5 @@ CHROMSF=expand("results/{mode}/{{sample}}/{chunk}---{{sample}}.saf.idx", mode=["
 ALLSAF=expand(
   CHROMSF,
   zip,
-  sample=bams.sample
+  sample=bams.sample.tolist()
 )
