@@ -21,7 +21,7 @@ def get_chunk(wc):
   return "-r " + wc.chunk
   
 
-CHROMSF=expand("results/{mode}/{{sample}}/{chunk}---{{sample}}.saf.idx", mode=["BY_CHROM"], chunk=chrom.list)
+CHROMSF=expand("results/{mode}/{{sample}}/{chunk}---{{sample}}.saf.idx", mode=["BY_CHROM"], chunk=chrom_list)
 
 ALLSAF=expand(
   CHROMSF,
