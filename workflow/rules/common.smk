@@ -26,5 +26,5 @@ CHROMSF=expand("results/{mode}/{{sample}}/{chunk}---{{sample}}.saf.idx", mode=["
 ALLSAF=expand(
   CHROMSF,
   zip,
-  sample=bams.sample.tolist()
+  sample=bams.sample
 )
