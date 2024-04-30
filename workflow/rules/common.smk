@@ -27,4 +27,3 @@ ALLSAF=expand(
   CHROMSF,
   zip,
   sample=bams.sample.tolist()
-)
