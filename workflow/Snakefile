@@ -5,7 +5,7 @@ include: "rules/common.smk"
 
 rule all:
   input:
-    safs=ALLBAT
+    safs=CHROMBS
     
 rule index_fasta:
   input:
