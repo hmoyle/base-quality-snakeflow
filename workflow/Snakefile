@@ -27,9 +27,9 @@ rule calc_saf:
   input:
     genome=config["genome"],
     fai=config["genome"] + ".fai",
-    bam="data/{samp}.bam"
+    bam="data/{sample}.bam"
   output:
-    saf="results/{mode}/{chunk}/saf/{samp}.saf.idx"
+    saf="results/{mode}/{chunk}/saf/{sample}.saf.idx"
   params:
     bf=config["params"]["angsd_bam_filters"],
     cs=config["params"]["calc_saf"],
@@ -38,9 +38,9 @@ rule calc_saf:
   conda:
     "envs/angsd.yaml"
   log:
-    "results/logs/calc_saf/{mode}/{chunk}/{samp}.txt"
+    "results/logs/calc_saf/{mode}/{chunk}/{sample}.txt"
   benchmark:
-    "results/benchmarks/calc_saf/{mode}/{chunk}/{samp}.txt"
+    "results/benchmarks/calc_saf/{mode}/{chunk}/{sample}.txt"
   shell:
     " PREFIX=$(echo {output.saf} | sed 's/\.saf\.idx$//g;');"
     " angsd -b {input.bam} -nThreads {threads} -anc {input.genome} {params.chunk_opt} "
@@ -50,17 +50,17 @@ rule calc_saf:
 
 rule calc_sfs:
   input:
-    saf="results/{mode}/{chunk}/saf/{samp}.saf.idx"
+    saf="results/{mode}/{chunk}/saf/{sample}.saf.idx"
   output:
-    sfs="results/{mode}/{chunk}/sfs/{samp}.ml"
+    sfs="results/{mode}/{chunk}/sfs/{sample}.ml"
   params:
     rs=config["params"]["realSFS"],
     chunk_opt=get_chunk
   conda:
     "envs/angsd.yaml"
   log:
-    "results/logs/calc_sfs/{mode}/{chunk}/{samp}.txt"
+    "results/logs/calc_sfs/{mode}/{chunk}/{sample}.txt"
   benchmark:
-    "results/benchmarks/calc_sfs/{mode}/{chunk}/{samp}.txt"
+    "results/benchmarks/calc_sfs/{mode}/{chunk}/{sample}.txt"
   shell:
     " realSFS -cores {threads} {params.rs} {params.chunk_opt} {input.saf} > {output.sfs} 2> {log} "
